@@ -1,0 +1,30 @@
+{
+    "name": "devgroup/dotplant-content",
+    "description": "The extension for DotPlant3 with pages, content blocks, etc.",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","event"],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Pavel Fedotov",
+            "email": "fps.06@mail.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "yiisoft/yii2": "~2.0.0",
+        "devgroup/dotplant": "dev-master",
+        "devgroup/yii2-data-structure-tools": "*",
+        "devgroup/yii2-tag-dependency-helper": "~1.4"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "~2.0.0",
+        "codeception/codeception": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "DotPlant\\Content\\": "src/"
+        }
+    }
+}
