@@ -2,7 +2,7 @@
     "name": "devgroup/dotplant-content",
     "description": "The extension for DotPlant3 with pages, content blocks, etc.",
     "type": "dotplant-extension",
-    "keywords": ["yii2","extension","event"],
+    "keywords": ["yii2", "dotplant", "block", "content", "content block", "extension"],
     "license": "MIT",
     "minimum-stability": "dev",
     "authors": [
