@@ -1,5 +1,5 @@
 {
-    "name": "devgroup/dotplant-content",
+    "name": "dotplant/content",
     "description": "The extension for DotPlant3 with pages, content blocks, etc.",
     "type": "dotplant-extension",
     "keywords": ["yii2", "dotplant", "block", "content", "content block", "extension"],
@@ -16,7 +16,8 @@
         "yiisoft/yii2": "~2.0.0",
         "devgroup/dotplant": "dev-master",
         "devgroup/yii2-data-structure-tools": "*",
-        "devgroup/yii2-tag-dependency-helper": "~1.4"
+        "devgroup/yii2-tag-dependency-helper": "~1.4",
+        "devgroup/yii2-entity": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "~2.0.0",
