@@ -27,5 +27,17 @@
         "psr-4": {
             "DotPlant\\Content\\": "src/"
         }
+    },
+    "extra": {
+        "yii2-extension": {
+            "name": "DotPlant Content",
+            "name_ru": "DotPlant Контент",
+            "iconUrl": "",
+            "description_ru": "Расширение для работы со страницами, контентными блоками и прочими контентными вещами в DotPlant3 CMS"
+        },
+        "migrationPath": [
+            "src/migrations"
+        ],
+        "translationCategory": "dotplant.content"
     }
 }
