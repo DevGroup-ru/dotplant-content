@@ -52,8 +52,8 @@ class m160728_093615_init extends Migration
             'model_id',
             Page::tableName(),
             'id',
-            'UPDATE',
-            'UPDATE'
+            'CASCADE',
+            'CASCADE'
         );
         PropertiesTableGenerator::getInstance()->generate(Page::class);
     }
