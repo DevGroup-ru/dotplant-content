@@ -11,17 +11,17 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist devgroup/dotplant-content "*"
+php composer.phar require --prefer-dist dotplant/content "*"
 ```
 
 or add
 
 ```
-"devgroup/dotplant-content": "*"
+"dotplant/content": "*"
 ```
 
 to the require section of your `composer.json` file.
 
 
-Using
+Usage
 -----
