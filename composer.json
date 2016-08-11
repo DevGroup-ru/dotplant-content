@@ -2,13 +2,17 @@
     "name": "dotplant/content",
     "description": "The extension for DotPlant3 with pages, content blocks, etc.",
     "type": "dotplant-extension",
-    "keywords": ["yii2", "dotplant", "block", "content", "content block", "extension"],
+    "keywords": ["yii2", "dotplant", "block", "content", "content block", "extension", "page"],
     "license": "MIT",
     "minimum-stability": "dev",
     "authors": [
         {
             "name": "Pavel Fedotov",
             "email": "fps.06@mail.ru"
+        },
+        {
+          "name": "Pavel Naumov",
+          "email": "huggbies@email.su"
         }
     ],
     "require": {
@@ -17,7 +21,11 @@
         "devgroup/dotplant": "dev-master",
         "devgroup/yii2-data-structure-tools": "*",
         "devgroup/yii2-tag-dependency-helper": "~1.4",
-        "devgroup/yii2-entity": "dev-master"
+        "devgroup/yii2-entity": "dev-master",
+        "dotplant/entity-structure": "dev-master",
+        "kartik-v/yii2-widget-switchinput": "*",
+        "kartik-v/yii2-widget-select2": "@dev",
+        "devgroup/yii2-jstree-widget": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "~2.0.0",
@@ -38,6 +46,7 @@
         "migrationPath": [
             "src/migrations"
         ],
+        "configurables": "src/configurables.php",
         "translationCategory": "dotplant.content"
     }
 }
