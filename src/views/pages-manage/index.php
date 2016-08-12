@@ -10,13 +10,14 @@ use yii\helpers\Html;
 use app\vendor\dotplant\content\src\ContentModule;
 use devgroup\JsTreeWidget\widgets\TreeWidget;
 use \devgroup\JsTreeWidget\helpers\ContextMenuHelper;
+use DevGroup\AdminUtils\Helper;
 
 $this->title = Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Pages');
 $this->params['breadcrumbs'][] = $this->title;
 $buttons = Html::a(
     Icon::show('plus') . '&nbsp'
     . Yii::t(ContentModule::TRANSLATION_CATEGORY, 'New page'),
-    ['/pages-manage/edit', 'returnUrl' => \DevGroup\AdminUtils\Helper::returnUrl()],
+    ['/pages-manage/edit', 'parent_id' => $parentId, 'returnUrl' => Helper::returnUrl()],
     [
         'class' => 'btn btn-success',
     ]);
@@ -51,7 +52,7 @@ HTML;
                     'label' => 'Open',
                     'action' => ContextMenuHelper::actionUrl(
                         ['/pages-manage/index'],
-                        ['parent_id']
+                        ['parent_id', 'context_id', 'id']
                     ),
                 ],
                 'edit' => [

@@ -63,6 +63,7 @@ class PagesManageController extends BaseController
             'tree-parent' => [
                 'class' => TreeNodeMoveAction::class,
                 'className' => Page::class,
+                'saveAttributes' => ['parent_id', 'context_id']
             ],
         ];
     }
