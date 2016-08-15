@@ -18,7 +18,6 @@
     "require": {
         "php": ">=5.5.0",
         "yiisoft/yii2": "~2.0.0",
-        "devgroup/dotplant": "dev-master",
         "devgroup/yii2-data-structure-tools": "*",
         "devgroup/yii2-tag-dependency-helper": "~1.4",
         "devgroup/yii2-entity": "dev-master",

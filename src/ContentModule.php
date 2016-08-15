@@ -19,6 +19,13 @@ class ContentModule extends Module
      */
     public $itemsPerPage = 10;
 
+    /**
+     * Show hidden records in tree
+     *
+     * @var bool
+     */
+    public $showHiddenInTree = false;
+
     const TRANSLATION_CATEGORY = 'dotplant.content';
 
     /**

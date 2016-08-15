@@ -22,7 +22,7 @@ class Page extends BaseStructure
     /**
      * @inheritdoc
      */
-    protected static $tablePrefix = 'content_page';
+    protected static $tablePrefix = 'dotplant_page';
 
     /**
      * @inheritdoc
@@ -31,6 +31,4 @@ class Page extends BaseStructure
     {
         return ContentModule::module()->itemsPerPage;
     }
-
-
 }

@@ -11,6 +11,8 @@ use app\vendor\dotplant\content\src\ContentModule;
 use devgroup\JsTreeWidget\widgets\TreeWidget;
 use \devgroup\JsTreeWidget\helpers\ContextMenuHelper;
 use DevGroup\AdminUtils\Helper;
+use DevGroup\DataStructure\Properties\Module;
+use \DevGroup\AdminUtils\columns\ActionColumn;
 
 $this->title = Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Pages');
 $this->params['breadcrumbs'][] = $this->title;
@@ -94,12 +96,6 @@ HTML;
                         ],
                     ],
                     [
-                        'attribute' => 'h1',
-                        'options' => [
-                            'width' => '20%',
-                        ],
-                    ],
-                    [
                         'attribute' => 'slug',
                         'options' => [
                             'width' => '15%',
@@ -117,24 +113,68 @@ HTML;
                         ],
                     ],
                     [
-                        'class' => 'DevGroup\AdminUtils\columns\ActionColumn',
+                        'attribute' => 'is_deleted',
+                        'label' => Module::t('app', 'Show deleted?'),
+                        'value' => function ($model) {
+                            return $model->isDeleted() === true ? Module::t('app', 'Deleted') : Module::t('app', 'Active');
+                        },
+                        'filter' => [
+                            Module::t('app', 'Show only active'),
+                            Module::t('app', 'Show only deleted')
+                        ],
+                        'filterInputOptions' => [
+                            'class' => 'form-control',
+                            'id' => null,
+                            'prompt' => Module::t('app', 'Show all')
+                        ]
+                    ],
+                    [
+                        'class' => ActionColumn::class,
                         'options' => [
-                            'width' => '95px',
+                            'width' => '120px',
                         ],
-                        'buttons' => [
-                            [
-                                'url' => '/pages-manage/edit',
-                                'icon' => 'pencil',
-                                'class' => 'btn-primary',
-                                'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Edit'),
-                            ],
-                            [
-                                'url' => '/pages-manage/delete',
-                                'icon' => 'trash-o',
-                                'class' => 'btn-danger',
-                                'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Delete'),
-                            ],
-                        ],
+                        'buttons' => function ($model, $key, $index, $column) {
+                            $result = [
+                                [
+                                    'url' => '/pages-manage/edit',
+                                    'icon' => 'pencil',
+                                    'class' => 'btn-primary',
+                                    'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Edit'),
+                                ],
+                            ];
+
+                            if ($model->isDeleted() === false) {
+                                $result['delete'] = [
+                                    'url' => '/pages-manage/delete',
+                                    'visible' => false,
+                                    'icon' => 'trash-o',
+                                    'class' => 'btn-warning',
+                                    'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Delete'),
+                                    'options' => [
+                                        'data-action' => 'delete',
+                                    ],
+                                ];
+                            } else {
+                                $result['restore'] = [
+                                    'url' => '/pages-manage/restore',
+                                    'icon' => 'undo',
+                                    'class' => 'btn-info',
+                                    'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Restore'),
+                                ];
+                                $result['delete'] = [
+                                    'url' => '/pages-manage/delete',
+                                    'urlAppend' => ['hard' => 1],
+                                    'icon' => 'trash-o',
+                                    'class' => 'btn-danger',
+                                    'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Delete'),
+                                    'options' => [
+                                        'data-action' => 'delete',
+                                    ],
+                                ];
+                            }
+
+                            return $result;
+                        }
                     ]
                 ],
             ]);

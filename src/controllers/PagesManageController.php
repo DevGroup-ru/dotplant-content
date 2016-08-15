@@ -2,14 +2,17 @@
 
 namespace DotPlant\Content\controllers;
 
+use app\vendor\dotplant\content\src\ContentModule;
 use DevGroup\AdminUtils\controllers\BaseController;
 use devgroup\JsTreeWidget\actions\AdjacencyList\TreeNodeMoveAction;
 use devgroup\JsTreeWidget\actions\AdjacencyList\TreeNodesReorderAction;
 use DotPlant\Content\assets\DotPlantContentAsset;
 use DotPlant\Content\models\Page;
 use DotPlant\EntityStructure\actions\BaseEntityAutocompleteAction;
+use DotPlant\EntityStructure\actions\BaseEntityDeleteAction;
 use DotPlant\EntityStructure\actions\BaseEntityEditAction;
 use DotPlant\EntityStructure\actions\BaseEntityListAction;
+use DotPlant\EntityStructure\actions\BaseEntityRestoreAction;
 use DotPlant\EntityStructure\actions\BaseEntityTreeAction;
 use DotPlant\EntityStructure\models\BaseStructure;
 use DotPlant\EntityStructure\StructureModule;
@@ -50,11 +53,21 @@ class PagesManageController extends BaseController
                 'viewFile' => '@DotPlant/Content/views/pages-manage/edit'
             ],
             'autocomplete' => [
-                'class' => BaseEntityAutocompleteAction::class
+                'class' => BaseEntityAutocompleteAction::class,
+                'searchFields' => ['field']
+            ],
+            'delete' => [
+                'class' => BaseEntityDeleteAction::class,
+                'entityClass' => Page::class,
+            ],
+            'restore' => [
+                'class' => BaseEntityRestoreAction::class,
+                'entityClass' => Page::class,
             ],
             'get-tree' => [
                 'class' => BaseEntityTreeAction::class,
                 'className' => Page::class,
+                'showHiddenInTree' => ContentModule::module()->showHiddenInTree,
             ],
             'tree-reorder' => [
                 'class' => TreeNodesReorderAction::class,
@@ -65,6 +78,7 @@ class PagesManageController extends BaseController
                 'className' => Page::class,
                 'saveAttributes' => ['parent_id', 'context_id']
             ],
+
         ];
     }
 

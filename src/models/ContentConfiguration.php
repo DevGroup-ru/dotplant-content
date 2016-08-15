@@ -16,12 +16,14 @@ class ContentConfiguration extends BaseConfigurationModel
     {
         $attributes = [
             'itemsPerPage',
+            'showHiddenInTree'
         ];
 
         parent::__construct($attributes, $config);
         /** @var ContentModule $module */
         $module = ContentModule::module();
         $this->itemsPerPage = $module->itemsPerPage;
+        $this->showHiddenInTree = $module->showHiddenInTree;
     }
 
     /**
@@ -31,6 +33,7 @@ class ContentConfiguration extends BaseConfigurationModel
     {
         return [
             [['itemsPerPage'], 'integer'],
+            [['showHiddenInTree'], 'boolean'],
         ];
     }
 
@@ -41,6 +44,7 @@ class ContentConfiguration extends BaseConfigurationModel
     {
         return [
             'itemsPerPage' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Items Per Page'),
+            'showHiddenInTree' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Show Hidden Records In Tree'),
         ];
     }
 
@@ -84,6 +88,7 @@ class ContentConfiguration extends BaseConfigurationModel
                 'contentEntity' => [
                     'class' => ContentModule::class,
                     'itemsPerPage' => $this->itemsPerPage,
+                    'showHiddenInTree' => (bool)$this->showHiddenInTree
                 ]
             ],
         ];
@@ -103,7 +108,7 @@ class ContentConfiguration extends BaseConfigurationModel
     public function aliases()
     {
         return [
-            '@DotPlant/Content' =>  realpath(dirname(__DIR__)),
+            '@DotPlant/Content' => realpath(dirname(__DIR__)),
         ];
     }
 }
