@@ -8,6 +8,7 @@ The extension for DotPlant3 with pages, content blocks, etc.
 *This extension based on `dotplant/entity-structure`. Activate it first after installation if not yet* 
 
 Best way to install this extension is to use DotPlant ExtensionsManager included in every DotPlant installation.
+
 1. Go to the `site.com/extensions-manager/extensions`
 2. Click `Search` section in the left navigation
 3. Find `dotplant/content`
