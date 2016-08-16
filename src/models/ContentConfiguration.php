@@ -2,9 +2,8 @@
 
 namespace DotPlant\Content\models;
 
-use app\vendor\dotplant\content\src\ContentModule;
+use DotPlant\Content\ContentModule;
 use DevGroup\ExtensionsManager\models\BaseConfigurationModel;
-use DotPlant\Content\controllers\PagesManageController;
 use Yii;
 
 class ContentConfiguration extends BaseConfigurationModel
@@ -53,11 +52,7 @@ class ContentConfiguration extends BaseConfigurationModel
      */
     public function webApplicationAttributes()
     {
-        return [
-            'controllerMap' => [
-                'pages-manage' => PagesManageController::class,
-            ]
-        ];
+        return [];
     }
 
     /**
@@ -85,7 +80,7 @@ class ContentConfiguration extends BaseConfigurationModel
                 ],
             ],
             'modules' => [
-                'contentEntity' => [
+                'content' => [
                     'class' => ContentModule::class,
                     'itemsPerPage' => $this->itemsPerPage,
                     'showHiddenInTree' => (bool)$this->showHiddenInTree

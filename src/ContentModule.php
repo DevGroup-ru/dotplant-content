@@ -1,6 +1,6 @@
 <?php
 
-namespace app\vendor\dotplant\content\src;
+namespace DotPlant\Content;
 
 use yii\base\Module;
 use Yii;
@@ -33,9 +33,9 @@ class ContentModule extends Module
      */
     public static function module()
     {
-        $module = Yii::$app->getModule('contentEntity');
+        $module = Yii::$app->getModule('content');
         if ($module === null) {
-            $module = new self('contentEntity');
+            $module = new self('content');
         }
         return $module;
     }

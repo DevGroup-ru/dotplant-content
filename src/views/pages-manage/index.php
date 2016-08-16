@@ -7,7 +7,7 @@
 use yii\grid\GridView;
 use kartik\icons\Icon;
 use yii\helpers\Html;
-use app\vendor\dotplant\content\src\ContentModule;
+use DotPlant\Content\ContentModule;
 use devgroup\JsTreeWidget\widgets\TreeWidget;
 use \devgroup\JsTreeWidget\helpers\ContextMenuHelper;
 use DevGroup\AdminUtils\Helper;
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $buttons = Html::a(
     Icon::show('plus') . '&nbsp'
     . Yii::t(ContentModule::TRANSLATION_CATEGORY, 'New page'),
-    ['/pages-manage/edit', 'parent_id' => $parentId, 'returnUrl' => Helper::returnUrl()],
+    ['/content/pages-manage/edit', 'parent_id' => $parentId, 'returnUrl' => Helper::returnUrl()],
     [
         'class' => 'btn btn-success',
     ]);
@@ -45,22 +45,22 @@ HTML;
 <div class="row">
     <div class="col-sm-12 col-md-6">
         <?= TreeWidget::widget([
-            'treeDataRoute' => ['/pages-manage/get-tree', 'selected_id' => $parentId],
-            'reorderAction' => ['/pages-manage/tree-reorder'],
-            'changeParentAction' => ['/pages-manage/tree-parent'],
+            'treeDataRoute' => ['/content/pages-manage/get-tree', 'selected_id' => $parentId],
+            'reorderAction' => ['/content/pages-manage/tree-reorder'],
+            'changeParentAction' => ['/content/pages-manage/tree-parent'],
             'treeType' => TreeWidget::TREE_TYPE_ADJACENCY,
             'contextMenuItems' => [
                 'open' => [
                     'label' => 'Open',
                     'action' => ContextMenuHelper::actionUrl(
-                        ['/pages-manage/index'],
+                        ['/content/pages-manage/index'],
                         ['parent_id', 'context_id', 'id']
                     ),
                 ],
                 'edit' => [
                     'label' => 'Edit',
                     'action' => ContextMenuHelper::actionUrl(
-                        ['/pages-manage/edit']
+                        ['/content/pages-manage/edit']
                     ),
                 ]
             ],
@@ -136,7 +136,7 @@ HTML;
                         'buttons' => function ($model, $key, $index, $column) {
                             $result = [
                                 [
-                                    'url' => '/pages-manage/edit',
+                                    'url' => '/content/pages-manage/edit',
                                     'icon' => 'pencil',
                                     'class' => 'btn-primary',
                                     'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Edit'),
@@ -145,7 +145,7 @@ HTML;
 
                             if ($model->isDeleted() === false) {
                                 $result['delete'] = [
-                                    'url' => '/pages-manage/delete',
+                                    'url' => '/content/pages-manage/delete',
                                     'visible' => false,
                                     'icon' => 'trash-o',
                                     'class' => 'btn-warning',
@@ -156,13 +156,13 @@ HTML;
                                 ];
                             } else {
                                 $result['restore'] = [
-                                    'url' => '/pages-manage/restore',
+                                    'url' => '/content/pages-manage/restore',
                                     'icon' => 'undo',
                                     'class' => 'btn-info',
                                     'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Restore'),
                                 ];
                                 $result['delete'] = [
-                                    'url' => '/pages-manage/delete',
+                                    'url' => '/content/pages-manage/delete',
                                     'urlAppend' => ['hard' => 1],
                                     'icon' => 'trash-o',
                                     'class' => 'btn-danger',

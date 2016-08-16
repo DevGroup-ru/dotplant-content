@@ -2,7 +2,7 @@
 
 namespace DotPlant\Content\models;
 
-use app\vendor\dotplant\content\src\ContentModule;
+use DotPlant\Content\ContentModule;
 use DevGroup\Entity\traits\BaseActionsInfoTrait;
 use DevGroup\Entity\traits\EntityTrait;
 use DevGroup\Entity\traits\SoftDeleteTrait;

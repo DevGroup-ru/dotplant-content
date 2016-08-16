@@ -21,3 +21,4 @@ Best way to install this extension is to use DotPlant ExtensionsManager included
 
 Usage
 -----
+After installation and activation pages manage interface will be available at `site.com/content/pages-manage` url  

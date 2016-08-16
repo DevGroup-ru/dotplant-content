@@ -2,7 +2,7 @@
 
 namespace DotPlant\Content\controllers;
 
-use app\vendor\dotplant\content\src\ContentModule;
+use DotPlant\Content\ContentModule;
 use DevGroup\AdminUtils\controllers\BaseController;
 use devgroup\JsTreeWidget\actions\AdjacencyList\TreeNodeMoveAction;
 use devgroup\JsTreeWidget\actions\AdjacencyList\TreeNodesReorderAction;

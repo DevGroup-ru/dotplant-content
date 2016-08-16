@@ -4,7 +4,8 @@
  * @var $this \yii\web\View
  * @var \DotPlant\EntityStructure\models\BaseStructure $model
  */
-use app\vendor\dotplant\content\src\ContentModule;
+
+use DotPlant\Content\ContentModule;
 use kartik\switchinput\SwitchInput;
 use DevGroup\Multilingual\models\Context;
 use dmstr\widgets\Alert;
@@ -19,13 +20,13 @@ $this->title = empty($model->id)
     : Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Edit page #{id}', ['id' => $model->id]);
 
 $this->params['breadcrumbs'][] = [
-    'url' => ['/pages-manage/index'],
+    'url' => ['/content/pages-manage/index'],
     'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Pages management')
 ];
 $this->params['breadcrumbs'][] = $this->title;
 $contexts = ArrayHelper::map(Context::find()->all(), 'id', 'name');
-$url = Url::to(['/pages-manage/autocomplete']);
-$getContextUrl = Url::to(['/pages-manage/get-context-id']);
+$url = Url::to(['/content/pages-manage/autocomplete']);
+$getContextUrl = Url::to(['/content/pages-manage/get-context-id']);
 $missingText = Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Missing parameter {param}', ['param' => 'getContextUrl']);
 $js = <<<JS
     window.DPContent = {
