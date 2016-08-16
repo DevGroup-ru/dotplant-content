@@ -75,7 +75,9 @@ $form = \yii\bootstrap\ActiveForm::begin([
                             'ajax' => [
                                 'url' => $url,
                                 'dataType' => 'json',
-                                'data' => new JsExpression('function(params) { return {q:params.term}; }')
+                                'data' => new JsExpression('function(params) { return {q:params.term}; }'),
+                                'delay' => '400',
+                                'error' => new JsExpression('function(error) {alert(error.responseText);}'),
                             ],
                             'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
                             'templateResult' => new JsExpression('function(parent) { return parent.text; }'),
