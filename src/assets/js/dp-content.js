@@ -7,11 +7,6 @@ var DPContent = window.DPContent || {};
         var val = $this.val();
         if (null === val || val == '') {
             $('option', $contextSelect).prop('disabled', false) || $('option', $contextSelect).removeAttr('disabled');
-            if (0 == $('option[value=0]', $this).length) {
-                $("option[value='']", $this).val(0).prop('selected', true);
-            } else {
-                $this.val(0);
-            }
         } else {
             if (false !== Object.prototype.hasOwnProperty.call(DPContent, 'getContextUrl')) {
                 $.ajax({
@@ -30,9 +25,9 @@ var DPContent = window.DPContent || {};
                     }
                 });
             } else {
-                alert('getContextUrl is not set');
+                var missingText = DPContent.missingText || 'Missing parameter "getContextUrl"';
+                alert(missingText);
             }
         }
     };
 })(jQuery);
-

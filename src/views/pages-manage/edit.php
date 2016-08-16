@@ -26,9 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
 $contexts = ArrayHelper::map(Context::find()->all(), 'id', 'name');
 $url = Url::to(['/pages-manage/autocomplete']);
 $getContextUrl = Url::to(['/pages-manage/get-context-id']);
+$missingText = Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Missing parameter {param}', ['param' => 'getContextUrl']);
 $js = <<<JS
     window.DPContent = {
-        getContextUrl: '$getContextUrl'
+        getContextUrl: '$getContextUrl',
+        missingText: '$missingText'
     };
 JS;
 $this->registerJs($js, View::POS_HEAD);
@@ -70,9 +72,6 @@ $form = \yii\bootstrap\ActiveForm::begin([
                         'pluginOptions' => [
                             'allowClear' => true,
                             'minimumInputLength' => 3,
-                            'language' => [
-                                'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
-                            ],
                             'ajax' => [
                                 'url' => $url,
                                 'dataType' => 'json',

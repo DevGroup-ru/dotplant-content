@@ -54,7 +54,6 @@ class PagesManageController extends BaseController
             ],
             'autocomplete' => [
                 'class' => BaseEntityAutocompleteAction::class,
-                'searchFields' => ['field']
             ],
             'delete' => [
                 'class' => BaseEntityDeleteAction::class,
@@ -98,6 +97,5 @@ class PagesManageController extends BaseController
         Yii::$app->response->format = Response::FORMAT_JSON;
         $structureId = Yii::$app->request->post('structure_id');
         return BaseStructure::find()->select('context_id')->where(['id' => $structureId])->scalar();
-
     }
 }
