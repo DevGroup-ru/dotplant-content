@@ -4,7 +4,6 @@ namespace DotPlant\Content\controllers;
 
 use DotPlant\Content\ContentModule;
 use DevGroup\AdminUtils\controllers\BaseController;
-use devgroup\JsTreeWidget\actions\AdjacencyList\TreeNodeMoveAction;
 use devgroup\JsTreeWidget\actions\AdjacencyList\TreeNodesReorderAction;
 use DotPlant\Content\assets\DotPlantContentAsset;
 use DotPlant\Content\models\Page;
@@ -14,6 +13,7 @@ use DotPlant\EntityStructure\actions\BaseEntityEditAction;
 use DotPlant\EntityStructure\actions\BaseEntityListAction;
 use DotPlant\EntityStructure\actions\BaseEntityRestoreAction;
 use DotPlant\EntityStructure\actions\BaseEntityTreeAction;
+use DotPlant\EntityStructure\actions\BaseEntityTreeMoveAction;
 use DotPlant\EntityStructure\models\BaseStructure;
 use DotPlant\EntityStructure\StructureModule;
 use Yii;
@@ -73,7 +73,7 @@ class PagesManageController extends BaseController
                 'className' => Page::class,
             ],
             'tree-parent' => [
-                'class' => TreeNodeMoveAction::class,
+                'class' => BaseEntityTreeMoveAction::class,
                 'className' => Page::class,
                 'saveAttributes' => ['parent_id', 'context_id']
             ],
