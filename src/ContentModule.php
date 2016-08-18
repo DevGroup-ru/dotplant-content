@@ -35,7 +35,7 @@ class ContentModule extends Module
     {
         $module = Yii::$app->getModule('content');
         if ($module === null) {
-            $module = new self('content');
+            $module = $module = Yii::createObject(self::class, ['content']);
         }
         return $module;
     }
