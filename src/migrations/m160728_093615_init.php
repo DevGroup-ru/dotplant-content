@@ -23,6 +23,10 @@ class m160728_093615_init extends Migration
             ]
         );
         PropertiesTableGenerator::getInstance()->generate(Page::class);
+        $auth = Yii::$app->authManager;
+        $permission = $auth->createPermission('content-manage');
+        $permission->description = 'Content manage permission';
+        $auth->add($permission);
     }
 
     public function down()
@@ -35,5 +39,10 @@ class m160728_093615_init extends Migration
             ]
         );
         PropertiesTableGenerator::getInstance()->drop(Page::class);
+        $auth = Yii::$app->authManager;
+        $permission = $auth->getPermission('content-manage');
+        if (null !== $permission) {
+            $auth->remove($permission);
+        }
     }
 }

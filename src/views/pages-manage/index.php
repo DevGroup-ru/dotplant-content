@@ -152,6 +152,7 @@ HTML;
                                     'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Delete'),
                                     'options' => [
                                         'data-action' => 'delete',
+                                        'data-method' => 'post',
                                     ],
                                 ];
                             } else {
@@ -169,6 +170,7 @@ HTML;
                                     'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Delete'),
                                     'options' => [
                                         'data-action' => 'delete',
+                                        'data-method' => 'post',
                                     ],
                                 ];
                             }
