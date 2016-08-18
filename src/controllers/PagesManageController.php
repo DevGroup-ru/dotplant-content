@@ -54,6 +54,7 @@ class PagesManageController extends BaseController
             ],
             'autocomplete' => [
                 'class' => BaseEntityAutocompleteAction::class,
+                'entityClass' => Page::class,
             ],
             'delete' => [
                 'class' => BaseEntityDeleteAction::class,
