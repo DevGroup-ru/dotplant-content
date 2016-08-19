@@ -10,6 +10,7 @@ return [
     'Main options' => 'Основные настройки',
     'Missing parameter {param}' => 'Не хватает параметра {param}',
     'New page' => 'Новая страница',
+    'Page' => 'Страница',
     'Page properties' => 'Свойства страницы',
     'Pages' => 'Страницы',
     'Pages list' => 'Список страниц',

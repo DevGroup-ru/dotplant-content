@@ -19,6 +19,8 @@ class Page extends BaseStructure
     use BaseActionsInfoTrait;
     use SoftDeleteTrait;
 
+    const TRANSLATION_CATEGORY = 'dotplant.content';
+
     /**
      * @inheritdoc
      */
