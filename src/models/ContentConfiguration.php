@@ -42,8 +42,8 @@ class ContentConfiguration extends BaseConfigurationModel
     public function attributeLabels()
     {
         return [
-            'itemsPerPage' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Items Per Page'),
-            'showHiddenInTree' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Show Hidden Records In Tree'),
+            'itemsPerPage' => Yii::t('dotplant.content', 'Items Per Page'),
+            'showHiddenInTree' => Yii::t('dotplant.content', 'Show Hidden Records In Tree'),
         ];
     }
 
@@ -72,7 +72,7 @@ class ContentConfiguration extends BaseConfigurationModel
             'components' => [
                 'i18n' => [
                     'translations' => [
-                        ContentModule::TRANSLATION_CATEGORY => [
+                        'dotplant.content' => [
                             'class' => 'yii\i18n\PhpMessageSource',
                             'basePath' => dirname(__DIR__) . DIRECTORY_SEPARATOR . 'messages',
                         ]

@@ -118,7 +118,7 @@ class PagesManageController extends BaseController
     {
         if (false === Yii::$app->request->isAjax) {
             throw new NotFoundHttpException(
-                Yii::t(StructureModule::TRANSLATION_CATEGORY, 'Page not found')
+                Yii::t('dotplant.entity.structure', 'Page not found')
             );
         }
         Yii::$app->response->format = Response::FORMAT_JSON;

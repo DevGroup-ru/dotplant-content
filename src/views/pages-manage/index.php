@@ -7,18 +7,16 @@
 use yii\grid\GridView;
 use kartik\icons\Icon;
 use yii\helpers\Html;
-use DotPlant\Content\ContentModule;
 use devgroup\JsTreeWidget\widgets\TreeWidget;
 use \devgroup\JsTreeWidget\helpers\ContextMenuHelper;
 use DevGroup\AdminUtils\Helper;
-use DevGroup\DataStructure\Properties\Module;
 use \DevGroup\AdminUtils\columns\ActionColumn;
 
-$this->title = Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Pages');
+$this->title = Yii::t('dotplant.content', 'Pages');
 $this->params['breadcrumbs'][] = $this->title;
 $buttons = Html::a(
     Icon::show('plus') . '&nbsp'
-    . Yii::t(ContentModule::TRANSLATION_CATEGORY, 'New page'),
+    . Yii::t('dotplant.content', 'New page'),
     ['/content/pages-manage/edit', 'parent_id' => $parentId, 'returnUrl' => Helper::returnUrl()],
     [
         'class' => 'btn btn-success',
@@ -70,7 +68,7 @@ HTML;
         <div class="indreams-pages__list-pages box box-solid">
             <div class="box-header with-border clearfix">
                 <h3 class="box-title pull-left">
-                    <?= Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Pages list') ?>
+                    <?= Yii::t('dotplant.content', 'Pages list') ?>
                 </h3>
             </div>
             <?php
@@ -85,25 +83,28 @@ HTML;
                 'columns' => [
                     [
                         'attribute' => 'name',
+                        'label' => Yii::t('dotplant.entity.structure', 'Name'),
                         'options' => [
                             'width' => '20%',
                         ],
                     ],
                     [
                         'attribute' => 'title',
+                        'label' => Yii::t('entity', 'Title'),
                         'options' => [
                             'width' => '20%',
                         ],
                     ],
                     [
                         'attribute' => 'slug',
+                        'label' => Yii::t('entity', 'Last url part'),
                         'options' => [
                             'width' => '15%',
                         ],
                     ],
                     [
                         'attribute' => 'is_active',
-                        'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Active'),
+                        'label' => Yii::t('dotplant.content', 'Active'),
                         'content' => function ($data) {
                             return Yii::$app->formatter->asBoolean($data->is_active);
                         },
@@ -114,18 +115,18 @@ HTML;
                     ],
                     [
                         'attribute' => 'is_deleted',
-                        'label' => Module::t('app', 'Show deleted?'),
+                        'label' => Yii::t('dotplant.content', 'Show deleted?'),
                         'value' => function ($model) {
-                            return $model->isDeleted() === true ? Module::t('app', 'Deleted') : Module::t('app', 'Active');
+                            return $model->isDeleted() === true ? Yii::t('dotplant.content', 'Deleted') : Yii::t('dotplant.content', 'Active');
                         },
                         'filter' => [
-                            Module::t('app', 'Show only active'),
-                            Module::t('app', 'Show only deleted')
+                            Yii::t('dotplant.content', 'Show only active'),
+                            Yii::t('dotplant.content', 'Show only deleted')
                         ],
                         'filterInputOptions' => [
                             'class' => 'form-control',
                             'id' => null,
-                            'prompt' => Module::t('app', 'Show all')
+                            'prompt' => Yii::t('dotplant.content', 'Show all')
                         ]
                     ],
                     [
@@ -139,7 +140,7 @@ HTML;
                                     'url' => '/content/pages-manage/edit',
                                     'icon' => 'pencil',
                                     'class' => 'btn-primary',
-                                    'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Edit'),
+                                    'label' => Yii::t('dotplant.content', 'Edit'),
                                 ],
                             ];
 
@@ -149,7 +150,7 @@ HTML;
                                     'visible' => false,
                                     'icon' => 'trash-o',
                                     'class' => 'btn-warning',
-                                    'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Delete'),
+                                    'label' => Yii::t('dotplant.content', 'Delete'),
                                     'options' => [
                                         'data-action' => 'delete',
                                         'data-method' => 'post',
@@ -160,14 +161,14 @@ HTML;
                                     'url' => '/content/pages-manage/restore',
                                     'icon' => 'undo',
                                     'class' => 'btn-info',
-                                    'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Restore'),
+                                    'label' => Yii::t('dotplant.content', 'Restore'),
                                 ];
                                 $result['delete'] = [
                                     'url' => '/content/pages-manage/delete',
                                     'urlAppend' => ['hard' => 1],
                                     'icon' => 'trash-o',
                                     'class' => 'btn-danger',
-                                    'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Delete'),
+                                    'label' => Yii::t('dotplant.content', 'Delete'),
                                     'options' => [
                                         'data-action' => 'delete',
                                         'data-method' => 'post',

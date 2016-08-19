@@ -5,7 +5,6 @@
  * @var \DotPlant\EntityStructure\models\BaseStructure $model
  */
 
-use DotPlant\Content\ContentModule;
 use kartik\switchinput\SwitchInput;
 use DevGroup\Multilingual\models\Context;
 use dmstr\widgets\Alert;
@@ -16,18 +15,18 @@ use yii\helpers\Url;
 use yii\web\View;
 
 $this->title = empty($model->id)
-    ? Yii::t(ContentModule::TRANSLATION_CATEGORY, 'New page')
-    : Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Edit page #{id}', ['id' => $model->id]);
+    ? Yii::t('dotplant.content', 'New page')
+    : Yii::t('dotplant.content', 'Edit page #{id}', ['id' => $model->id]);
 
 $this->params['breadcrumbs'][] = [
     'url' => ['/content/pages-manage/index'],
-    'label' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Pages management')
+    'label' => Yii::t('dotplant.content', 'Pages management')
 ];
 $this->params['breadcrumbs'][] = $this->title;
 $contexts = ArrayHelper::map(Context::find()->all(), 'id', 'name');
 $url = Url::to(['/content/pages-manage/autocomplete']);
 $getContextUrl = Url::to(['/content/pages-manage/get-context-id']);
-$missingText = Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Missing parameter {param}', ['param' => 'getContextUrl']);
+$missingText = Yii::t('dotplant.content', 'Missing parameter {param}', ['param' => 'getContextUrl']);
 $js = <<<JS
     window.DPContent = {
         getContextUrl: '$getContextUrl',
@@ -49,13 +48,13 @@ $form = \yii\bootstrap\ActiveForm::begin([
         <ul class="nav nav-tabs">
             <li class="active">
                 <a href="#page-data" data-toggle="tab" aria-expanded="true">
-                    <?= Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Main options') ?>
+                    <?= Yii::t('dotplant.content', 'Main options') ?>
                 </a>
             </li>
             <?php if (false === $model->isNewRecord) : ?>
                 <li class="">
                     <a href="#page-properties" data-toggle="tab" aria-expanded="false">
-                        <?= Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Page properties') ?>
+                        <?= Yii::t('dotplant.content', 'Page properties') ?>
                     </a>
                 </li>
             <?php endif; ?>
@@ -65,10 +64,10 @@ $form = \yii\bootstrap\ActiveForm::begin([
                 <div class="col-sm-12 col-md-6">
                     <?= $form->field($model, 'parent_id')->widget(Select2::class, [
                         'initValueText' => (null === $model->parent)
-                            ? Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Search for a parent ...')
+                            ? Yii::t('dotplant.content', 'Search for a parent ...')
                             : $model->parent->name,
                         'options' => [
-                            'placeholder' => Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Search for a parent ...')
+                            'placeholder' => Yii::t('dotplant.content', 'Search for a parent ...')
                         ],
                         'pluginOptions' => [
                             'allowClear' => true,
@@ -132,7 +131,7 @@ $form = \yii\bootstrap\ActiveForm::begin([
                 <div class="col-sm-12">
                     <div class="btn-group pull-right" role="group" aria-label="Edit buttons">
                         <button type="submit" class="btn btn-success pull-right">
-                            <?= Yii::t(ContentModule::TRANSLATION_CATEGORY, 'Save') ?>
+                            <?= Yii::t('dotplant.content', 'Save') ?>
                         </button>
                     </div>
                 </div>

@@ -26,8 +26,6 @@ class ContentModule extends Module
      */
     public $showHiddenInTree = false;
 
-    const TRANSLATION_CATEGORY = 'dotplant.content';
-
     /**
      * @return self Module instance in application
      */
