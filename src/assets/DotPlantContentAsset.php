@@ -15,7 +15,7 @@ class DotPlantContentAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@DotPlant/Content/assets';
+    public $sourcePath = '@DotPlant/Content/assets/dist';
 
     /**
      * @inheritdoc
