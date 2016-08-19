@@ -1358,12 +1358,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DevGroup-ru/dotplant-entity-structure.git",
-                "reference": "51fd605cde362201b0ee49ee59575721d8a730fc"
+                "reference": "0df068e9398b49e9440043238e7a07a9fd063733"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DevGroup-ru/dotplant-entity-structure/zipball/51fd605cde362201b0ee49ee59575721d8a730fc",
-                "reference": "51fd605cde362201b0ee49ee59575721d8a730fc",
+                "url": "https://api.github.com/repos/DevGroup-ru/dotplant-entity-structure/zipball/0df068e9398b49e9440043238e7a07a9fd063733",
+                "reference": "0df068e9398b49e9440043238e7a07a9fd063733",
                 "shasum": ""
             },
             "require": {
@@ -1414,7 +1414,7 @@
                 "structure",
                 "yii2"
             ],
-            "time": "2016-08-19 09:32:32"
+            "time": "2016-08-19 11:09:03"
         },
         {
             "name": "elasticsearch/elasticsearch",
