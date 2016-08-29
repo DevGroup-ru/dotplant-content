@@ -9,20 +9,11 @@ use Yii;
 class ContentConfiguration extends BaseConfigurationModel
 {
     /**
-     * @param array $config
+     * @inheritdoc
      */
-    public function __construct($config = [])
+    public function getModuleClassName()
     {
-        $attributes = [
-            'itemsPerPage',
-            'showHiddenInTree'
-        ];
-
-        parent::__construct($attributes, $config);
-        /** @var ContentModule $module */
-        $module = ContentModule::module();
-        $this->itemsPerPage = $module->itemsPerPage;
-        $this->showHiddenInTree = $module->showHiddenInTree;
+        return ContentModule::className();
     }
 
     /**
