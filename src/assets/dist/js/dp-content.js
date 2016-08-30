@@ -21,7 +21,7 @@ var DPContent = window.DPContent || {};
                         });
                     },
                     error: function (data, textStatus, errorThrown) {
-                        alert(o.responseText);
+                        alert(data.responseText);
                     }
                 });
             } else {

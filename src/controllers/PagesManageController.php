@@ -39,9 +39,24 @@ class PagesManageController extends BaseController
                 'class' => AccessControl::class,
                 'rules' => [
                     [
+                        'actions' => ['index', 'get-tree', 'edit', 'autocomplete', 'get-context-id'],
                         'allow' => true,
-                        'roles' => ['content-manage'],
+                        'roles' => ['dotplant-content-view'],
                     ],
+                    [
+                        'actions' => ['edit', 'tree-reorder', 'tree-parent'],
+                        'allow' => true,
+                        'roles' => ['dotplant-content-edit', 'dotplant-content-publish'],
+                    ],
+                    [
+                        'actions' => ['delete', 'restore'],
+                        'allow' => true,
+                        'roles' => ['dotplant-content-delete'],
+                    ],
+                    [
+                        'allow' => false,
+                        'roles' => ['*'],
+                    ]
                 ],
             ],
             'verbs' => [
@@ -76,7 +91,8 @@ class PagesManageController extends BaseController
             'edit' => [
                 'class' => BaseEntityEditAction::class,
                 'entityClass' => Page::class,
-                'viewFile' => '@DotPlant/Content/views/pages-manage/edit'
+                'viewFile' => '@DotPlant/Content/views/pages-manage/edit',
+                'permission' => 'dotplant-content-edit'
             ],
             'autocomplete' => [
                 'class' => BaseEntityAutocompleteAction::class,

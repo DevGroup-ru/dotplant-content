@@ -3,6 +3,7 @@
 /**
  * @var $this \yii\web\View
  * @var \DotPlant\EntityStructure\models\BaseStructure $model
+ * @var bool $canSave
  */
 
 use kartik\switchinput\SwitchInput;
@@ -127,15 +128,17 @@ $form = \yii\bootstrap\ActiveForm::begin([
                     'form' => $form,
                 ]) ?>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="btn-group pull-right" role="group" aria-label="Edit buttons">
-                        <button type="submit" class="btn btn-success pull-right">
-                            <?= Yii::t('dotplant.content', 'Save') ?>
-                        </button>
+            <?php if (true === $canSave) : ?>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="btn-group pull-right" role="group" aria-label="Edit buttons">
+                            <button type="submit" class="btn btn-success pull-right">
+                                <?= Yii::t('dotplant.content', 'Save') ?>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 <?php $form::end(); ?>
