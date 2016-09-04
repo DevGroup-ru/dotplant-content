@@ -11,7 +11,9 @@ class m160728_093615_init extends Migration
     public function up()
     {
         if (null === $this->db->getTableSchema(Entity::tableName())) {
-            Console::stderr("Please, first install if not and activate 'DotPlant Entity Structure' extension!" . PHP_EOL);
+            Console::stderr(
+                "Please, first install if not and activate 'DotPlant Entity Structure' extension!" . PHP_EOL
+            );
             return false;
         }
 
