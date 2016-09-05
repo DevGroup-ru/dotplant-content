@@ -15,6 +15,12 @@ use yii2tech\ar\role\RoleBehavior;
 /**
  * Class Page
  *
+ * @property PageExtended[] $extended
+ * @property array[] $content
+ * @property array[] $providers
+ * @property integer $template_id
+ * @property integer $layout_id
+ *
  * @package DotPlant\Content\models
  */
 class Page extends BaseStructure
@@ -31,6 +37,9 @@ class Page extends BaseStructure
      */
     protected static $tablePrefix = 'dotplant_page';
 
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return ArrayHelper::merge(
@@ -45,7 +54,6 @@ class Page extends BaseStructure
 
     public function getTranslationModelClassName()
     {
-
         return PageStructureTranslation::class;
     }
     /**

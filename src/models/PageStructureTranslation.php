@@ -22,6 +22,17 @@ class PageStructureTranslation extends StructureTranslation
         );
     }
 
+    /**
+     * Modifies base query to include extended relation to reduce total queries count
+     * @return \yii\db\ActiveQuery
+     */
+    public static function find()
+    {
+        $query = parent::find();
+        $query->joinWith('extended');
+        return $query;
+    }
+
     public function getExtended()
     {
         return $this->hasOne(PageExtended::className(), ['model_id' => 'model_id', 'language_id' => 'language_id']);
