@@ -2,6 +2,7 @@
 
 namespace DotPlant\Content\models;
 
+use DotPlant\Content\actions\ContentPublishAction;
 use DotPlant\Content\ContentModule;
 use DevGroup\Entity\traits\BaseActionsInfoTrait;
 use DevGroup\Entity\traits\EntityTrait;
@@ -9,6 +10,10 @@ use DevGroup\Entity\traits\SoftDeleteTrait;
 use DotPlant\EntityStructure\models\BaseStructure;
 use DotPlant\Monster\Universal\MonsterEntityTrait;
 use yii\helpers\ArrayHelper;
+<<<<<<< HEAD
+use Yii;
+=======
+>>>>>>> master
 
 /**
  * Class Page
@@ -50,10 +55,14 @@ class Page extends BaseStructure
         );
     }
 
+    /**
+     * @return mixed
+     */
     public function getTranslationModelClassName()
     {
         return PageStructureTranslation::class;
     }
+
     /**
      * @inheritdoc
      */
@@ -62,6 +71,10 @@ class Page extends BaseStructure
         return ContentModule::module()->itemsPerPage;
     }
 
+    /**
+     * @return array
+     * @throws \yii\base\InvalidConfigException
+     */
     public function advancedTranslatableAttributes()
     {
         $result = array_keys(PageExtended::getTableSchema()->columns);
@@ -70,9 +83,72 @@ class Page extends BaseStructure
         return $result;
     }
 
+<<<<<<< HEAD
+    /**
+     * @inheritdoc
+     */
+    public static function getAccessRules()
+    {
+        return [
+            'view' => 'dotplant-content-view',
+            'edit' => 'dotplant-content-edit',
+            'delete' => 'dotplant-content-delete',
+            'publish' => 'dotplant-content-publish',
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected static $injectionActions = [
+        'publish' => [
+            'class' => ContentPublishAction::class
+        ],
+    ];
+
+    /**
+     * @inheritdoc
+     */
+    public function getEditPageTitle()
+    {
+        return (true === $this->getIsNewRecord())
+            ? Yii::t('dotplant.content', 'New page')
+            : Yii::t('dotplant.content', 'Edit {title}', ['title' => $this->name]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function getModuleBreadCrumbs()
+    {
+        return [
+            [
+                'url' => ['/structure/entity-manage/index'],
+                'label' => Yii::t('dotplant.content', 'Pages management')
+            ]
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function additionalGridButtons()
+    {
+        return [
+            'publish' => [
+                'url' => '/structure/entity-manage/publish',
+                'icon' => ($this->is_active == 1) ? 'eye-slash' : 'eye',
+                'class' => ($this->is_active == 1) ? 'btn-warning' : 'btn-primary',
+                'label' => Yii::t('dotplant.content', ($this->is_active == 1) ? 'Unpublish' : 'Publish'),
+                'attrs' => ['entity_id']
+            ]
+        ];
+    }
+=======
     public function saveMonsterContent()
     {
         return $this->defaultTranslation->save() && $this->save();
     }
 
+>>>>>>> master
 }
