@@ -108,7 +108,7 @@ class PagesManageController extends BaseController
             ],
             'get-tree' => [
                 'class' => BaseEntityTreeAction::class,
-                'className' => Page::class,
+                'className' => BaseStructure::class,
                 'showHiddenInTree' => ContentModule::module()->showHiddenInTree,
             ],
             'tree-reorder' => [

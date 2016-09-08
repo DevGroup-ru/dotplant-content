@@ -7,10 +7,8 @@ use DevGroup\Entity\traits\BaseActionsInfoTrait;
 use DevGroup\Entity\traits\EntityTrait;
 use DevGroup\Entity\traits\SoftDeleteTrait;
 use DotPlant\EntityStructure\models\BaseStructure;
-use DotPlant\Monster\Universal\MonsterContentTrait;
 use DotPlant\Monster\Universal\MonsterEntityTrait;
 use yii\helpers\ArrayHelper;
-use yii2tech\ar\role\RoleBehavior;
 
 /**
  * Class Page
@@ -70,6 +68,11 @@ class Page extends BaseStructure
         $result[] = 'content';
         $result[] = 'providers';
         return $result;
+    }
+
+    public function saveMonsterContent()
+    {
+        return $this->defaultTranslation->save() && $this->save();
     }
 
 }
