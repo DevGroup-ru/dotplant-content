@@ -20,6 +20,7 @@ return [
     'Edit {title}' => 'Редактируем  {title}',
     'Items Per Page' => 'Элементов на странице',
     'New page' => 'Новая страница',
+    'Page' => 'Страница',
     'Page not found!' => 'Страница не найдена!',
     'Pages management' => 'Управление страницами',
     'Show Hidden Records In Tree' => 'Показывать удаленные в дереве',
