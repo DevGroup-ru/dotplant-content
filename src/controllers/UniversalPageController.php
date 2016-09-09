@@ -25,7 +25,7 @@ class UniversalPageController extends FrontendController
                     [
                         'class' => MainEntity::class,
                         'mainEntityKey' => 'page',
-                        'defaultTemplateKey' => 'example',
+                        'defaultTemplateKey' => 'basic-template',
                     ],
                 ],
             ],
