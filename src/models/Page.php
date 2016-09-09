@@ -10,10 +10,7 @@ use DevGroup\Entity\traits\SoftDeleteTrait;
 use DotPlant\EntityStructure\models\BaseStructure;
 use DotPlant\Monster\Universal\MonsterEntityTrait;
 use yii\helpers\ArrayHelper;
-<<<<<<< HEAD
 use Yii;
-=======
->>>>>>> master
 
 /**
  * Class Page
@@ -83,7 +80,6 @@ class Page extends BaseStructure
         return $result;
     }
 
-<<<<<<< HEAD
     /**
      * @inheritdoc
      */
@@ -144,11 +140,12 @@ class Page extends BaseStructure
             ]
         ];
     }
-=======
+
+    /**
+     * @return bool
+     */
     public function saveMonsterContent()
     {
         return $this->defaultTranslation->save() && $this->save();
     }
-
->>>>>>> master
 }
