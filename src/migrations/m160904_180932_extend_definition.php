@@ -1,6 +1,7 @@
 <?php
 
 use DotPlant\Content\models\Page;
+use DotPlant\Content\models\PageExtended;
 use DotPlant\EntityStructure\models\Entity;
 use DotPlant\EntityStructure\models\StructureTranslation;
 use yii\db\Migration;
@@ -24,7 +25,7 @@ class m160904_180932_extend_definition extends Migration
             : null;
 
         $this->createTable(
-            '{{%dotplant_page_ext}}',
+            PageExtended::tableName(),
             [
                 'model_id' => $this->integer(),
                 'language_id' => $this->integer(),
@@ -41,11 +42,16 @@ class m160904_180932_extend_definition extends Migration
         );
         $this->addForeignKey(
             'fkPageExt',
-            '{{%dotplant_page_ext}}',
+            PageExtended::tableName(),
             ['model_id', 'language_id'],
             StructureTranslation::tableName(),
             ['model_id', 'language_id'],
             'CASCADE'
+        );
+        $this->addPrimaryKey(
+            'pk-dotplant_page_ext-model_id-language_id',
+            PageExtended::tableName(),
+            ['model_id', 'language_id']
         );
     }
 
@@ -60,7 +66,7 @@ class m160904_180932_extend_definition extends Migration
                 'class_name' => Page::class,
             ]
         );
-        $this->dropTable('{{%dotplant_page_ext}}');
+        $this->dropTable(PageExtended::tableName());
 
     }
 
