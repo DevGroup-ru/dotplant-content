@@ -61,14 +61,6 @@ class Page extends BaseStructure
     }
 
     /**
-     * @inheritdoc
-     */
-    protected static function getPageSize()
-    {
-        return ContentModule::module()->itemsPerPage;
-    }
-
-    /**
      * @return array
      * @throws \yii\base\InvalidConfigException
      */

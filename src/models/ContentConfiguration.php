@@ -21,10 +21,7 @@ class ContentConfiguration extends BaseConfigurationModel
      */
     public function rules()
     {
-        return [
-            [['itemsPerPage'], 'integer'],
-            [['showHiddenInTree'], 'boolean'],
-        ];
+        return [];
     }
 
     /**
@@ -32,10 +29,7 @@ class ContentConfiguration extends BaseConfigurationModel
      */
     public function attributeLabels()
     {
-        return [
-            'itemsPerPage' => Yii::t('dotplant.content', 'Items Per Page'),
-            'showHiddenInTree' => Yii::t('dotplant.content', 'Show Hidden Records In Tree'),
-        ];
+        return [];
     }
 
     /**
@@ -73,8 +67,6 @@ class ContentConfiguration extends BaseConfigurationModel
             'modules' => [
                 'content' => [
                     'class' => ContentModule::class,
-                    'itemsPerPage' => $this->itemsPerPage,
-                    'showHiddenInTree' => (bool)$this->showHiddenInTree
                 ]
             ],
         ];

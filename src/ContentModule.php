@@ -13,20 +13,6 @@ use Yii;
 class ContentModule extends Module
 {
     /**
-     * Count items per page
-     *
-     * @var int
-     */
-    public $itemsPerPage = 10;
-
-    /**
-     * Show hidden records in tree
-     *
-     * @var bool
-     */
-    public $showHiddenInTree = false;
-
-    /**
      * @return self Module instance in application
      */
     public static function module()
