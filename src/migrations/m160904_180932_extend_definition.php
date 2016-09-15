@@ -40,6 +40,12 @@ class m160904_180932_extend_definition extends Migration
             ],
             $tableOptions
         );
+        $this->addPrimaryKey(
+            'pk-dotplant_page_ext-model_id-language_id',
+            PageExtended::tableName(),
+            ['model_id', 'language_id']
+        );
+
         $this->addForeignKey(
             'fkPageExt',
             PageExtended::tableName(),
@@ -47,11 +53,6 @@ class m160904_180932_extend_definition extends Migration
             StructureTranslation::tableName(),
             ['model_id', 'language_id'],
             'CASCADE'
-        );
-        $this->addPrimaryKey(
-            'pk-dotplant_page_ext-model_id-language_id',
-            PageExtended::tableName(),
-            ['model_id', 'language_id']
         );
     }
 
@@ -69,15 +70,4 @@ class m160904_180932_extend_definition extends Migration
         $this->dropTable(PageExtended::tableName());
 
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }
