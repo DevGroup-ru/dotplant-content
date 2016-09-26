@@ -4,6 +4,8 @@ use DotPlant\Content\models\Page;
 use DotPlant\Content\models\PageExtended;
 use DotPlant\EntityStructure\models\Entity;
 use DotPlant\EntityStructure\models\StructureTranslation;
+use DevGroup\TagDependencyHelper\NamingHelper;
+use yii\caching\TagDependency;
 use yii\db\Migration;
 
 class m160904_180932_extend_definition extends Migration
@@ -54,6 +56,7 @@ class m160904_180932_extend_definition extends Migration
             ['model_id', 'language_id'],
             'CASCADE'
         );
+        TagDependency::invalidate(Yii::$app->cache, [NamingHelper::getCommonTag(Entity::class)]);
     }
 
     public function down()
@@ -68,6 +71,6 @@ class m160904_180932_extend_definition extends Migration
             ]
         );
         $this->dropTable(PageExtended::tableName());
-
+        TagDependency::invalidate(Yii::$app->cache, [NamingHelper::getCommonTag(Entity::class)]);
     }
 }

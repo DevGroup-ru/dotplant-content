@@ -1,20 +1,39 @@
 <?php
 
-use DevGroup\Multilingual\models\Context;
 use DotPlant\Content\models\Page;
 use DotPlant\Content\models\PageExtended;
 use DotPlant\EntityStructure\models\BaseStructure;
 use DotPlant\EntityStructure\models\Entity;
 use DotPlant\Monster\DataEntity\StaticContentProvider;
+use DotPlant\Monster\models\Template;
+use DotPlant\Monster\models\TemplateRegion;
+use DevGroup\Multilingual\models\Context;
+use DevGroup\TagDependencyHelper\NamingHelper;
+use yii\caching\TagDependency;
 use yii\db\Migration;
 use yii\db\Query;
 
 class m160912_115202_dotplant_core_add_demo_page extends Migration
 {
+    const DEMO_PAGE_SLUG = 'dp3-monster-demo-page';
+
+    private function invalidateTags()
+    {
+        TagDependency::invalidate(
+            Yii::$app->cache,
+            [
+                NamingHelper::getCommonTag(TemplateRegion::class),
+                NamingHelper::getCommonTag(Template::class),
+                NamingHelper::getCommonTag(BaseStructure::class),
+                NamingHelper::getCommonTag(PageExtended::class),
+            ]
+        );
+    }
+
     public function up()
     {
         $this->insert(
-            '{{%template}}',
+            Template::tableName(),
             [
                 'name' => 'Example page layout',
                 'key' => 'example',
@@ -51,7 +70,7 @@ class m160912_115202_dotplant_core_add_demo_page extends Migration
         );
         $templateId = $this->db->lastInsertID;
         $this->insert(
-            '{{%template_region}}',
+            TemplateRegion::tableName(),
             [
                 'template_id' => $templateId,
                 'sort_order' => 2,
@@ -66,7 +85,7 @@ class m160912_115202_dotplant_core_add_demo_page extends Migration
             ]
         );
         $this->insert(
-            '{{%template_region}}',
+            TemplateRegion::tableName(),
             [
                 'template_id' => $templateId,
                 'sort_order' => 1,
@@ -94,7 +113,8 @@ class m160912_115202_dotplant_core_add_demo_page extends Migration
                         'model_id' => $id,
                         'language_id' => $language->id,
                         'name' => 'name',
-                        'slug' => 'universal',
+                        'slug' => self::DEMO_PAGE_SLUG,
+                        'url' => self::DEMO_PAGE_SLUG,
                     ]
                 );
                 $this->insert(
@@ -108,17 +128,20 @@ class m160912_115202_dotplant_core_add_demo_page extends Migration
                 );
             }
         }
+        $this->invalidateTags();
     }
 
     public function down()
     {
         $ids = (new Query())->select('model_id')
             ->from(BaseStructure::getTranslationTableName())
-            ->where(['slug' => 'universal'])
+            ->where(['slug' => self::DEMO_PAGE_SLUG])
             ->column();
         $this->delete(
             BaseStructure::tableName(),
             ['id' => $ids]
         );
+        $this->delete(Template::tableName(), ['key' => 'example']);
+        $this->invalidateTags();
     }
 }
