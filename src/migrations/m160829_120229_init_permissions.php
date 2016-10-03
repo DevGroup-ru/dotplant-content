@@ -11,7 +11,10 @@ class m160829_120229_init_permissions extends Migration
             'permits' => [
                 'dotplant-content-view' => 'View Content Entries',
                 'dotplant-content-publish' => 'Publish/Unpublish Content Entries'
-            ]
+            ],
+            'roles' => [
+                'DotplantStructureManager',
+            ],
         ],
         'ContentAdministrator' => [
             'descr' => 'Content Administration Role',
@@ -20,9 +23,9 @@ class m160829_120229_init_permissions extends Migration
                 'dotplant-content-delete' => 'Delete/Restore Content Entries'
             ],
             'roles' => [
-                'ContentManager'
-            ]
-        ]
+                'ContentManager',
+            ],
+        ],
     ];
 
     public function up()
